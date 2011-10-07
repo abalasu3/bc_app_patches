@@ -1,0 +1,39 @@
+<h1>Are you sure?</h1>
+
+<table>
+  <tr>
+    <th>Count</th>
+    <th>Post id</th>
+    <th>User id</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<%= form_for([@post, @post.vote_post.build]) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :count%><br />
+  </div>
+   <div class="field">
+    <%= f.hidden_field :post_id %><br />
+  </div>
+  <div>
+  <%= f.submit%>
+  </div>
+ <% end %>
+
+<% @vote_posts.each do |vote_post| %>
+  <tr>
+    <td><%= vote_post.count %></td>
+    <td><%= vote_post.post_id %></td>
+    <td><%= vote_post.user_id %></td>
+    <td><%= link_to 'Show', vote_post %></td>
+    <td><%= link_to 'Edit', edit_vote_post_path(vote_post) %></td>
+    <td><%= link_to 'Destroy', vote_post, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Vote post', new_vote_post_path %>

@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Content:</b>
+  <%= @post.content %>
+</p>
+
+
+
+ <h1> Replies </h1>
+
+<table>
+  <tr>
+    <th>Response</th>
+    <th>Vote</th>
+  </tr>
+
+<%= form_for([@post, @post.replies.build]) do |f| %>
+    <% @post.replies.each do |reply| %>
+     <tr>
+    <td><%= reply[:response] %></td>
+    <td><%= reply[:repcount] %></td>
+       <% if signed_in? %>
+    <td><%= link_to 'Vote Reply', :controller => 'replies', :action => 'edit', :id => reply[:id]%> </td>
+           <% end %>
+   </tr>
+               <div class="field">
+    <%= f.hidden_field :id %><br />
+  </div>
+           <% end %>
+        <% end %>
+    </table>
+
+<h1>Add a reply:</h1>
+  <%= form_for([@post, @post.replies.build]) do |f| %>
+   <div class="field">
+    <%= f.label :response %><br />
+    <%= f.text_area :response %>
+  </div>
+   <div class="field">
+    <%= f.hidden_field :post_id %><br />
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %> |
+
+<% if !(signed_in?) %>
+   You are not logged in! Only logged in users can comment on the post.
+  Click <% link_to 'here', signin_path  %> to login.
+<% end %>

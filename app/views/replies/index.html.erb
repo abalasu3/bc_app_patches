@@ -1,0 +1,22 @@
+<h1>Listing replies</h1>
+
+<table>
+  <tr>
+    <th>Response</th>
+    <th>Post</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @replies.each do |reply| %>
+  <tr>
+    <td><%= reply.response %></td>
+    <td><%= reply.post_id %></td>
+     </tr>
+<% end %>
+</table>
+
+<br />
+
+

@@ -1,0 +1,29 @@
+<h1>All users</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+
+   </tr>
+<%#= will_paginate(@users)%>
+
+  <% @users.each do |user| %>
+    <tr>
+       <td><%= link_to user.name, user %></td>
+      <% if signed_in? %>
+         <% if current_user.admin? %>
+     <td><%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.name}" %>      </td>
+     <%if user.admin == true %>
+	 <td><%=link_to 'Remove Admin Status', "/users/#{user.id}/removeadmin/", :method=>:post, :confirm => "You sure?", %>
+  <%else%>   </td>
+        <td> <%=link_to 'Grant Admin Status', "/users/#{user.id}/addadmin/", :method=>:post, :confirm => "You sure?", %>
+  <%end%>  </td>
+
+        </tr>
+  <% end %>
+  <% end %>
+      <% end %>
+
+<%#=will_paginate(@users)%>
+ </table>

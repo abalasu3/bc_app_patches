@@ -1,0 +1,21 @@
+<table class="profile" summary="Profile information">
+ Hi <%= @user.name %> Signed in
+  <tr>
+    <td class="main">
+      Hi <%= @user.name %>
+
+    </td>
+    <td class="sidebar round">
+      <strong>Name</strong> <%= @user.name %><br />
+      <strong>URL</strong>  <%= link_to user_path(@user), @user %> <br />
+      <strong>Total Posts posted</strong> <%= @user.posts.count %>
+      <strong>Total Replies given</strong> <%= @user.replies.count %>
+    </td>
+
+        <li><%= link_to "Create a Post", new_post_path%></li>
+        <li><%= link_to "View Posts", posts_path %></li>
+   </tr>
+</table>
+
+
+

@@ -1,0 +1,21 @@
+<%= form_for(@votereply) do |f| %>
+  <% if @votereply.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@votereply.errors.count, "error") %> prohibited this votereply from being saved:</h2>
+
+      <ul>
+      <% @votereply.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :rcount %><br />
+    <%= f.text_field :rcount %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

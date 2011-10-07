@@ -1,0 +1,37 @@
+<h1>Listing posts</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Content</th>
+    <th>Votes</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @posts.each do |post| %>
+  <tr>
+    <td><%= post.title %></td>
+    <td><%= post.content %></td>
+    <td><%= post.count %></td>
+    <% if signed_in? %>
+    <td><%= link_to 'Reply', post %></td>
+    <td><%= link_to 'Vote', edit_post_path(post) %></td>
+        <% if current_user.admin? %>
+     <td><%= link_to "delete", post, :method => :delete, :confirm => "Are You sure?", :title => "Delete #{post.title}" %> </td>
+  </tr>
+        <% end %>
+        <% end %>
+
+  <% end %>
+</table>
+
+<br />
+
+<% if signed_in? %>
+ <%= link_to 'New Post', new_post_path %>
+<% else %>
+  You are not logged in! Only logged in users can create questions and comment on them.<br>
+ Click <%= link_to 'here', signin_path  %> to login.
+<% end %>

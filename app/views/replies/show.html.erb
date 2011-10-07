@@ -1,0 +1,22 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Response:</b>
+  <%= @reply.response %>
+</p>
+
+
+
+<%= link_to 'Edit', edit_reply_path(@reply) %> |
+<%= link_to 'Back', replies_path %> |
+<%= form_for([@reply, @reply.votereplies.build]) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :rcount%><br />
+  </div>
+   <div class="field">
+    <%= f.hidden_field :reply_id %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

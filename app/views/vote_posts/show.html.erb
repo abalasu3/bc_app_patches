@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+
+<%= form_for([@post, @post.vote_posts.build]) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :count%><br />
+  </div>
+   <div class="field">
+    <%= f.hidden_field :post_id %><br />
+  </div>
+  <div>
+  <%= f.submit%>
+  </div>
+ <% end %>
+
+
+
+
+<%=# link_to 'Edit', edit_vote_post_path(@vote_post) %> |
+<%= #link_to 'Back', vote_posts_path %>

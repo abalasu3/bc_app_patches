@@ -1,0 +1,20 @@
+<h1>Editing post</h1>
+<h1>Vote updated successfully</h1>
+
+<%= form_for([@post, @post.replies.build]) do |f| %>
+  <div class="field">
+    <%= f.hidden_field :repcount%><br />
+  </div>
+   <div class="field">
+    <%= f.hidden_field :post_id %><br />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+
+<%= render 'form' %>
+
+
+<%= link_to 'Show', @post %> |
+<%= link_to 'Back', posts_path %>
