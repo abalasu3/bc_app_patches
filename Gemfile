@@ -11,6 +11,7 @@ gem 'will_paginate'
 
 group :development do
   gem 'rspec-rails', '2.6.1'
+  gem 'sqlite3'
   gem 'annotate', '2.4.0'
 end
 
