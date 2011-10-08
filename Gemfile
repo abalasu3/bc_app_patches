@@ -8,6 +8,10 @@ gem 'rails', '3.0.9'
 gem 'sqlite3'
 gem 'will_paginate'
 
+group :production do
+gem 'pg'
+end
+
 
 group :development do
   gem 'rspec-rails', '2.6.1'
