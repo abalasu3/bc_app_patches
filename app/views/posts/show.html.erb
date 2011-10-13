@@ -35,7 +35,7 @@
            <% end %>
         <% end %>
     </table>
-
+<% if signed_in? %>
 <h1>Add a reply:</h1>
   <%= form_for([@post, @post.replies.build]) do |f| %>
    <div class="field">
@@ -52,9 +52,10 @@
 <% end %>
 
 <%= link_to 'Edit', edit_post_path(@post) %> |
-<%= link_to 'Back', posts_path %> |
 
+<% end %>
+<%= link_to 'Back', posts_path %> <br>
 <% if !(signed_in?) %>
    You are not logged in! Only logged in users can comment on the post.
-  Click <% link_to 'here', signin_path  %> to login.
+   <%= link_to 'Sign In', signin_path %> here
 <% end %>

@@ -1,4 +1,4 @@
-<h1>Listing posts</h1>
+<h1>Top Questions</h1>
 
 <table>
   <tr>
@@ -15,8 +15,8 @@
     <td><%= post.title %></td>
     <td><%= post.content %></td>
     <td><%= post.count %></td>
-    <% if signed_in? %>
-    <td><%= link_to 'Reply', post %></td>
+    <td><%= link_to 'View Replies', post %></td>
+     <% if signed_in? %>
     <td><%= link_to 'Vote', edit_post_path(post) %></td>
         <% if current_user.admin? %>
      <td><%= link_to "delete", post, :method => :delete, :confirm => "Are You sure?", :title => "Delete #{post.title}" %> </td>
@@ -26,12 +26,18 @@
 
   <% end %>
 </table>
+ 
+<%if !signed_in? %>
+
+<%= link_to "Sign in now!", signin_path, :class => "signup_button round" %>
+<br> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+Don't have an account? <%= link_to "Sign up", signup_path %>
 
 <br />
-
+<% end %>
 <% if signed_in? %>
  <%= link_to 'New Post', new_post_path %>
-<% else %>
-  You are not logged in! Only logged in users can create questions and comment on them.<br>
- Click <%= link_to 'here', signin_path  %> to login.
 <% end %>

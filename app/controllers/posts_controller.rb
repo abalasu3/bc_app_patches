@@ -58,11 +58,12 @@ class PostsController < ApplicationController
       flash[:error] = "You cannot vote your own post"
     else
       @post.count = @post.count + 1
-      if @post.most_active.nil?
-        @post.most_active = (0.8 * @post.count) + (0.2 * @post.updated_at)
+    
+  if @post.most_active.nil?
+        @post.most_active = (0.8 * @post.count) + (0.0000002 * ((@post.updated_at).to_time.to_f))
       else
-        @post.most_active = (0.8 * @post.count) + (0.2 * @post.most_active)
-      end
+       @post.most_active = (0.8 * @post.count) + (0.2 * @post.most_active)
+    end
       @post.update_attributes(params[:count])
     end
 #    redirect_to :controller => VotePost, :action => show, :id => @post

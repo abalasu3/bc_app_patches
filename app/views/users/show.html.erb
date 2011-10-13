@@ -1,9 +1,8 @@
 <table class="profile" summary="Profile information">
- Hello <%= @user.name %>. You have signed in. Welcome. 
+ Welcome <%= @user.name %>. You are now Signed in!
   <tr>
     <td class="main">
-      
-    </td>
+     </td>
     <td class="sidebar round">
       <strong>Name</strong> <%= @user.name %><br />
       <strong>URL</strong>  <%= link_to user_path(@user), @user %> <br />

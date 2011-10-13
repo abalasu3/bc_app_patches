@@ -11,10 +11,17 @@
     <tr>
        <td><%= link_to user.name, user %></td>
       <% if signed_in? %>
-         <% if current_user.admin? %>
-     <td><%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
-                                :title => "Delete #{user.name}" %>      </td>
-     <%if user.admin == true %>
+         <% if current_user.admin? %>  
+
+           <%if user.admin == true %>
+            <td></td>
+            <%else%>  
+               <td><%= link_to "delete", user, :method => :delete, :confirm => "You sure?",
+                                :title => "Delete #{user.name}" %> <% end %>      </td>
+          
+            <% if current_user.id == user.id && user.admin == true %> 
+             <td></td>
+            <%elsif user.admin == true %> 
 	 <td><%=link_to 'Remove Admin Status', "/users/#{user.id}/removeadmin/", :method=>:post, :confirm => "You sure?", %>
   <%else%>   </td>
         <td> <%=link_to 'Grant Admin Status', "/users/#{user.id}/addadmin/", :method=>:post, :confirm => "You sure?", %>

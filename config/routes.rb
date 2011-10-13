@@ -22,7 +22,7 @@ SampleApp::Application.routes.draw do
   match '/help',    :to => 'pages#help'
   match '/replies/edit' , :to => 'replies#edit'
   match '/vote_posts/edit' , :to => 'vote_posts#edit'
-    root              :to => 'pages#home'
+    root              :to => 'posts#index'
 
 =begin
   get "pages/home"
